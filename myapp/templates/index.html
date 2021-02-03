@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Date</th>
+        </tr>
+        {% for product in products reversed %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.date_of_creation }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}
