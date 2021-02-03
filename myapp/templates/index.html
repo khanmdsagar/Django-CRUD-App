@@ -1,18 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Date</th>
-        </tr>
-        {% for product in products reversed %}
-            <tr>
-                <td>{{ product.name }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.date_of_creation }}</td>
-            </tr>
-        {% endfor %}
-    </table>
+    <div id="container">
+
+        <div id="nav-bar">
+            <div id="nav-body">
+                <label for="nav-body" id="nav-name">Shopping List</label>
+            </div>
+        </div>
+
+        <div id="app">
+
+            {% for product in products reversed %}
+                <div id="con-wrapper">
+                    <div id="p-name">{{ product.name }}</div>
+                    <div class="p-all">{{ product.price }}</div>
+                    <div class="p-all">{{ product.quantity }}</div>
+                </div>
+            {% endfor %}
+
+            <a id="fab-button" href="{% url 'insert' %}">
+                +
+            </a>
+
+        </div>
+
+    </div>
 {% endblock content %}

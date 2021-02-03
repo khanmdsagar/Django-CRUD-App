@@ -6,3 +6,6 @@ from myapp.models import Product
 def home(request):
     product = Product.objects.all()
     return render(request, 'index.html', {'products': product})
+
+def insertPage(request):
+    return render(request, 'insert.html')
