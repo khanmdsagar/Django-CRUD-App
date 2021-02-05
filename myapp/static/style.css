@@ -4,12 +4,20 @@
 body{
   background-color: rgb(247, 251, 255);
   animation: 1s anim;
+  font-family: 'Heebo', sans-serif;
 }
 @keyframes anim{
   0%{opacity: 0;}
 }
 
-/* insert page */
+.m-t-10{
+  margin-top: 10px;
+}
+.m-t-20{
+  margin-top: 20px;
+}
+/* insert page ...............................*/
+
 .status-container{
   display: flex;
   align-items: center;
@@ -18,7 +26,7 @@ body{
 .status{
   text-align: center;
   width: 215px;
-  background-color: blueviolet;
+  background-color: rgba(137, 43, 226, 0.568);
   padding: 10px;
   border-radius: 5px;
   color: #fff;
@@ -63,7 +71,20 @@ body{
   border-radius: 5px;
 }
 
-/* home page */
+
+/* home page ....................................*/
+.action-button{
+  background-color: #fff;
+  border: 0px solid;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px .1px rgb(212, 212, 212);
+  padding: 5px;
+  outline: none;
+  text-decoration: none;
+  display: flex;
+  margin: 10px;
+}
+
 #nav-bar
 {
     height: 60px;
@@ -102,6 +123,9 @@ body{
 #con-wrapper{
   background-color: #fff;
   padding: 10px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #p-name{
@@ -124,7 +148,7 @@ body{
 #fab-button{
   width: 40px;
   height: 40px;
-  position: absolute;
+  position: fixed;
   bottom: 50px;
   right: 50px;
   background-color: blueviolet;

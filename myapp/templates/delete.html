@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div id="app">
+
+        <div class="insert-container">
+            <div class="input-box">
+                <p>Do you want to delete?</p>
+                <form action="{% url 'deletedata' %}" method="POST">
+                    {% csrf_token %}
+                    <input name="id" hidden type="text" value="{{id}}">
+                    <button class="button m-t-20">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
