@@ -3,8 +3,67 @@
 }
 body{
   background-color: rgb(247, 251, 255);
+  animation: 1s anim;
+}
+@keyframes anim{
+  0%{opacity: 0;}
 }
 
+/* insert page */
+.status-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.status{
+  text-align: center;
+  width: 215px;
+  background-color: blueviolet;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.insert-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.input{
+  padding: 8px;
+  border: 0px solid;
+  background-color:  rgba(248, 248, 248, 0.479);
+  border-radius: 5px;
+}
+.input:focus{
+  outline: none;
+  border: 1px solid blueviolet;
+  border-radius: 5px;
+}
+.button{
+  border: 0px solid;
+  padding: 7px 15px;
+  cursor: default;
+  border-radius: 3px;
+  color: #fff;
+  background-color: blueviolet;
+  outline: none;
+}
+.button:active{
+  box-shadow: 0px 0px 2px .1px rgb(212, 212, 212);
+}
+
+.input-box{
+  text-align: center;
+  width: 200px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* home page */
 #nav-bar
 {
     height: 60px;
