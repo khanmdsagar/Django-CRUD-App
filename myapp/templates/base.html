@@ -14,16 +14,16 @@
 
 </head>
 <body>
-    <div id="nav-bar">
-        <div id="nav-body">
-            <label for="nav-body" id="nav-name" onclick="window.location = '/'">Shopping List</label>
-        </div>
-    </div>
+
+    {% block navbar %}
+    {% endblock %}
     
     {% block content %}
     {% endblock %}
 
     {% block script %}
     {% endblock %}
+
+<script src="{% static 'script.js' %}"></script>
 </body>
 </html>

@@ -30,12 +30,32 @@ def saveData(request):
             new_product.save()
             messages.success(request, "Saved")
 
-            # if status[0] == 1:
-            #     messages.success(request, "Saved")
-            # else:
-            #     messages.error(request, "Save failed")
-
             return redirect('insert')
+
+
+# update data
+def editPage(request, pid):
+    product = Product.objects.get(id = pid)
+    return render(request, 'edit.html', {'product': product})
+
+def editData(request):
+    if request.method == 'POST':
+        if request.POST['name'] == '' or request.POST['price'] == '' or request.POST['quantity'] == '':
+            messages.error(request, 'all fields required')
+            return redirect('edit')
+        else:
+            pid = request.POST['id']
+            product = Product.objects.filter(id = pid)
+
+            product.update(
+                name = request.POST['name'],
+                price = request.POST['price'],
+                quantity = request.POST['quantity']
+            )
+
+            messages.success(request, "Updated")
+
+            return redirect('home')
 
 
 # deleting data
@@ -55,3 +75,15 @@ def deleteData(request):
             messages.success(request, "Delete failed")
             
         return redirect('home')
+
+# search 
+def searchPage(request):
+    return render(request, 'search.html' )
+
+def searchData(request):
+    product = request.GET.get('name')
+    if product:
+        product = Product.objects.filter(name__icontains = product)
+    else:
+        product = Product.objects.all()
+    return render(request, 'search.html', {'products': product} )

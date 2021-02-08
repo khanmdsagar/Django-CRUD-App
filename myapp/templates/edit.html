@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block navbar %}
     {% include "navbar.html" %}
 {% endblock navbar %}
@@ -18,15 +17,17 @@
         </div>
 
         <div class="insert-container">
-            <form action = "{% url 'savedata' %}" method = "POST">
+            <form action = "{% url 'editdata' %}" method = "POST">
                 {% csrf_token %}
                 <div class="input-box">
-                    <input name="name" id="name" class="input" type="text" placeholder="Enter Name"> <br><br>
-                    <input name="price" id="price" class="input" type="text" placeholder="Enter Price"> <br><br>
-                    <input name="quantity" id="quantity" class="input" type="text" placeholder="Enter Quantity"> <br><br>
+                    <input hidden value="{{product.id}}" type="text" name="id" >
+                    <input value="{{product.name}}" name="name" class="input" type="text" placeholder="Enter Name"> <br><br>
+                    <input value="{{product.price}}" name="price" class="input" type="text" placeholder="Enter Price"> <br><br>
+                    <input value="{{product.quantity}}" name="quantity" class="input" type="text" placeholder="Enter Quantity"> <br><br>
                     <button class="button">Save</button>
                 </div>
             </form>
         </div>
+
     </div>
 {% endblock content %}

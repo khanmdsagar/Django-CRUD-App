@@ -1,37 +1,25 @@
 {% extends 'base.html' %}
 
-{% block navbar %}
-    {% include "navbar.html" %}
-{% endblock navbar %}
-
 {% block content %}
-    <div id="container">
+    <div id="search-container">
 
-        <div id="app">
-            
-            <div class="status-container">
-                {% if messages %}
-                    <div id="status">
-                        {% for message in messages %}
-                            {{ message }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
+        <div class="applet">
+
+            <form action="{% url 'searchdata' %}" method="GET">
+                {% csrf_token %}
+                <input name="name" type="text" class="input-search"> 
+                <button><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></button>
+            </form>
+
+            <div class="sizedBox"></div>
 
             {% for product in products reversed %}
                 <div id="con-wrapper">
                     <div class="con-data">
                         <div class="con-data-wrapper">
                             <div id="p-name">{{ product.name }}</div>
-                            <div class="p-all">price: {{ product.price }} $ </div>
-                            <div class="p-all">quantity: {{ product.quantity }} 
-                                {% if product.quantity != '1' %} 
-                                    pieces
-                                {% else %}
-                                    piece
-                                {% endif %}
-                            </div>
+                            <div class="p-all">price: {{ product.price }} ৳ </div>
+                            <div class="p-all">quantity: {{ product.quantity }} টি</div>
                         </div>
                     </div>
                     <div class="con-action">
@@ -39,13 +27,16 @@
                         <a href="{% url 'delete' product.id %}" class="action-button delete"><svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20"><path d="M0 0h24v24H0z" fill="none"/><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg></a>
                     </div>
                 </div>
+                {% empty %}
+                <div class="search-message">
+                    <p class="p-all">No Data Found...</p>
+                </div>
             {% endfor %}
 
-            <a id="fab-button" href="{% url 'insert' %}">
-                +
-            </a>
-
         </div>
+        <a id="fab-button" href="{% url 'home' %}">
+            H
+        </a>
 
     </div>
 {% endblock content %}
